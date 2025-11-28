@@ -13,6 +13,13 @@ login_manager.init_app(app)
 
 login_manager.login_view = 'login'
 
+
+@login_manager.unauthorized_handler
+def unauthorized():
+    """Handle unauthorized access for API"""
+    return jsonify({"message": "Não autorizado!"}), 401
+
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)

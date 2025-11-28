@@ -78,7 +78,7 @@ def test_logout(client):
 def test_logout_without_session(client):
     response = client.post("/logout")
     
-    assert response.status_code == 405
+    assert response.status_code == 401
 
 
 def test_delete_user(client):
